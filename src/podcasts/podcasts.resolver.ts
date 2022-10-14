@@ -19,62 +19,62 @@ export class PodcastsResolver {
   constructor(private readonly service: PodcastsService) {}
 
   @Mutation(() => CommonOutput)
-  createPodcast(
+  async createPodcast(
     @Args('input') createPodcastDto: CreatePodcastInput,
-  ): CommonOutput {
-    return this.service.createPodcast(createPodcastDto);
+  ): Promise<CommonOutput> {
+    return await this.service.createPodcast(createPodcastDto);
   }
 
   @Query(() => PodcastOutput)
-  getPodcast(@Args('id') id: number): PodcastOutput {
-    return this.service.getAllPodcast(id);
+  async getPodcast(@Args('id') id: number): Promise<PodcastOutput> {
+    return await this.service.getPodcast(id);
   }
 
   @Query(() => AllPodcastOutput)
-  getAllPodcasts(): AllPodcastOutput {
-    return this.service.getAllPodcasts();
+  async getAllPodcasts(): Promise<AllPodcastOutput> {
+    return await this.service.getAllPodcasts();
   }
 
   @Mutation(() => PodcastOutput)
-  updatePodcast(
+  async updatePodcast(
     @Args('id') id: number,
     @Args('input') updatePodcastInput: UpdatePodcastInput,
-  ): PodcastOutput {
-    return this.service.updatePodcast(id, updatePodcastInput);
+  ): Promise<PodcastOutput> {
+    return await this.service.updatePodcast(id, updatePodcastInput);
   }
 
   @Mutation(() => CommonOutput)
-  deletePodcast(@Args('id') id: number): CommonOutput {
-    return this.service.deletePodcast(id);
+  async deletePodcast(@Args('id') id: number): Promise<CommonOutput> {
+    return await this.service.deletePodcast(id);
   }
 
-  @Mutation(() => CommonOutput)
-  createEpisode(
+  @Mutation(() => PodcastOutput)
+  async createEpisode(
     @Args('id') id: number,
     @Args('input') createEpisodeInput: CreateEpisodeInput,
-  ) {
+  ): Promise<PodcastOutput> {
     return this.service.createEpisode(id, createEpisodeInput);
   }
 
   @Query(() => EpisodesOutput)
-  getEpisodes(@Args('id') id: number): EpisodesOutput {
-    return this.service.getEpisodes(id);
+  async getEpisodes(@Args('id') id: number): Promise<EpisodesOutput> {
+    return await this.service.getEpisodes(id);
   }
 
   @Mutation(() => CommonOutput)
-  deleteEpisode(
+  async deleteEpisode(
     @Args('id') id: number,
     @Args('episodeId') episodeId: number,
-  ): CommonOutput {
-    return this.service.removeEpisode(id, episodeId);
+  ): Promise<CommonOutput> {
+    return await this.service.removeEpisode(id, episodeId);
   }
 
   @Mutation(() => EpisodesOutput)
-  updateEpisode(
+  async updateEpisode(
     @Args('id') id: number,
     @Args('episodeId') episodeId: number,
     @Args('input') updateEpisodeInput: UpdateEpisodeInput,
-  ) :EpisodesOutput{
-    return this.service.updateEpisode(id, episodeId,updateEpisodeInput)
+  ): Promise<EpisodesOutput> {
+    return await this.service.updateEpisode(id, episodeId, updateEpisodeInput);
   }
 }
