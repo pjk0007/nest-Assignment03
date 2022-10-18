@@ -2,15 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ok } from 'assert';
 import { CommonOutput } from 'src/common/dto/common-output.dto';
+import { CreateEpisodeInput, UpdateEpisodeInput } from 'src/podcasts/dto/episode-input.dto';
+import { EpisodesOutput } from 'src/podcasts/dto/episode-output.dto';
 import {
-  CreateEpisodeInput,
   CreatePodcastInput,
-  UpdateEpisodeInput,
   UpdatePodcastInput,
 } from 'src/podcasts/dto/podcast-input.dto';
 import {
   AllPodcastOutput,
-  EpisodesOutput,
   PodcastOutput,
 } from 'src/podcasts/dto/podcast-output.dto';
 import { Episode } from 'src/podcasts/entities/episode.entity';
