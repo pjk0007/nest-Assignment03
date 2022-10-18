@@ -2,13 +2,15 @@ import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
 import { CommonOutput } from 'src/common/dto/common-output.dto';
 import {
   CreateEpisodeInput,
-  CreatePodcastInput,
   UpdateEpisodeInput,
+} from 'src/podcasts/dto/episode-input.dto';
+import { EpisodesOutput } from 'src/podcasts/dto/episode-output.dto';
+import {
+  CreatePodcastInput,
   UpdatePodcastInput,
 } from 'src/podcasts/dto/podcast-input.dto';
 import {
   AllPodcastOutput,
-  EpisodesOutput,
   PodcastOutput,
 } from 'src/podcasts/dto/podcast-output.dto';
 import { Podcast } from 'src/podcasts/entities/podcast.entity';
@@ -47,7 +49,11 @@ export class PodcastsResolver {
   async deletePodcast(@Args('id') id: number): Promise<CommonOutput> {
     return await this.service.deletePodcast(id);
   }
+}
 
+@Resolver(() => Podcast)
+export class EpisodeResolver {
+  constructor(private readonly service: PodcastsService) {}
   @Mutation(() => PodcastOutput)
   async createEpisode(
     @Args('id') id: number,

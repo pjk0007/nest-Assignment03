@@ -15,8 +15,3 @@ export class AllPodcastOutput extends CommonOutput {
   podcasts?: Podcast[];
 }
 
-@ObjectType()
-export class EpisodesOutput extends CommonOutput{
-  @Field(()=>[Episode], {nullable:true})
-  episodes?:Episode[];
-}

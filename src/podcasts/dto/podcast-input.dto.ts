@@ -14,11 +14,3 @@ export class UpdatePodcastInput extends PartialType(
   PickType(Podcast, ['title', 'category', 'rating']),
 ) {}
 
-@InputType()
-export class CreateEpisodeInput extends PickType(Episode, [
-  'title',
-  'category',
-]) {}
-
-@InputType()
-export class UpdateEpisodeInput extends PartialType(CreateEpisodeInput) {}
